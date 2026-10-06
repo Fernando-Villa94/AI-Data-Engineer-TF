@@ -4,31 +4,32 @@ models:
   - name: stg_products
     columns:
       - name: product_id
-        tests:
+        data_tests: # En v2 se prefiere 'data_tests' sobre 'tests'
           - not_null # Regla 1: Completitud
 
   - name: stg_customers
     columns:
       - name: customer_id
-        tests:
+        data_tests:
           - not_null # Regla 1: Completitud
 
   - name: stg_sales
     columns:
       - name: sale_id
-        tests:
+        data_tests:
           - not_null # Regla 1: Completitud
-          -- Regla 3: Unicidad (Prueba si el ID no se repite)
-          - unique 
+          - unique   # Regla 3: Unicidad
       - name: customer_id
-        tests:
+        data_tests:
           - not_null
-          - relationships: # Regla 4: Integridad Referencial (Validar que el cliente exista en su maestra)
-              to: ref('stg_customers')
-              field: customer_id
+          - relationships: # Regla 4: Integridad Referencial adaptada a dbt v2
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
       - name: product_id
-        tests:
+        data_tests:
           - not_null
-          - relationships: # Regla 4: Integridad Referencial (Validar que el producto exista en su maestra)
-              to: ref('stg_products')
-              field: product_id
+          - relationships: # Regla 4: Integridad Referencial adaptada a dbt v2
+              arguments:
+                to: ref('stg_products')
+                field: product_id

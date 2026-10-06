@@ -23,7 +23,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # =====================================================================
 models:
   adventureworks_pipeline:
-    # Todo lo que guardes dentro de la carpeta models/staging/ se creará como VISTA
     staging:
       +materialized: view
-      +schema: catalog_staging
+      +database: workspace      # <-- Forzamos a dbt a usar tu catálogo real
+      +schema: catalog_staging  # <-- Nombre limpio del esquema
