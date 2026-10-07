@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: customer_360
+    description: "Tablón analítico optimizado e histórico para inferencia de propensión con LightGBM."
+    
+    data_tests:
+      - unique:
+          column_name: "customer_id || '-' || cast(periodo_analisis as string)"
+
+    columns:
+
+      - name: recencia_dias
+        description: "Días desde la última compra hasta el cierre del periodo."
+        data_tests:
+          - not_null
+
+      - name: monto_prom_6m
+        data_tests:
+          - not_null
+
+      - name: frec_accessories_prom_6m
+        data_tests:
+          - not_null
+
+      - name: yearly_income
+        data_tests:
+          - not_null
+
+      - name: frec_clothing_prom_6m
+        data_tests:
+          - not_null
+
+      - name: children_at_home
+        data_tests:
+          - not_null
+
+      - name: total_children
+        data_tests:
+          - not_null
+
+      - name: number_cars
+        data_tests:
+          - not_null
+
+      - name: frec_bikes_prom_2m
+        data_tests:
+          - not_null

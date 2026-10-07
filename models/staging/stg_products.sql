@@ -8,7 +8,7 @@ select
     cast(subcategory as string) as subcategory,
     cast(brand as string) as brand,
     cast(description as string) as description,
-    cast(price as decimal(10,2)) as price,
+    cast(coalesce(price, 0) as decimal(10,2)) as price,
     -- Regla 6: Frescura (Fecha de procesamiento en esta nueva capa)
     current_timestamp() as fecha_ingesta_staging
 from source_data
