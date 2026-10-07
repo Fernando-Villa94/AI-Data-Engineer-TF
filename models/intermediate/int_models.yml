@@ -29,23 +29,23 @@ models:
         description: "Cantidad de bicicletas compradas en el mes."
         data_tests:
           - not_null
-          - dbt_expectations.expect_column_values_to_be_between:
+          - es_mayor_o_igual_a:
               arguments:
-                min_value: 0
+                valor_minimo: 0
 
 
       - name: frec_clothing_mes
         description: "Cantidad de prendas de ropa compradas en el mes."
         data_tests:
           - not_null
-          - dbt_expectations.expect_column_values_to_be_between:
+          - es_mayor_o_igual_a:
               arguments:
-                min_value: 0
+                valor_minimo: 0
 
       - name: frec_accessories_mes
         description: "Cantidad de accesorios comprados en el mes."
         data_tests:
           - not_null
-          - dbt_expectations.expect_column_values_to_be_between:
+          - es_mayor_o_igual_a:
               arguments:
-                min_value: 0
+                valor_minimo: 0
