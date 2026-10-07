@@ -27,3 +27,13 @@ models:
       +materialized: view
       +database: workspace      # <-- Forzamos a dbt a usar tu catálogo real
       +schema: catalog_staging  # <-- Nombre limpio del esquema
+    
+    intermediate: 
+      +materialized: view
+      +database: workspace      # <-- Forzamos a dbt a usar tu catálogo real
+      +schema: catalog_intermediate # <-- Nombre limpio del esquema
+
+    marts: 
+      +materialized: view
+      +database: workspace      # <-- Forzamos a dbt a usar tu catálogo real
+      +schema: catalog_marts # <-- Nombre limpio del esquema
