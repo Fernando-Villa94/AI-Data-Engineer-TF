@@ -14,35 +14,57 @@ models:
         description: "Días desde la última compra hasta el cierre del periodo."
         data_tests:
           - not_null
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0
 
       - name: monto_prom_6m
         data_tests:
           - not_null
-
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0
       - name: frec_accessories_prom_6m
         data_tests:
           - not_null
-
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0
       - name: yearly_income
         data_tests:
           - not_null
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0
 
       - name: frec_clothing_prom_6m
         data_tests:
           - not_null
-
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0
       - name: children_at_home
         data_tests:
           - not_null
-
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0
       - name: total_children
         data_tests:
           - not_null
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0          
 
       - name: number_cars
         data_tests:
           - not_null
-
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0
       - name: frec_bikes_prom_2m
         data_tests:
           - not_null
+          - es_mayor_o_igual_a:
+              arguments:
+                valor_minimo: 0

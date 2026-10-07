@@ -3,7 +3,7 @@
   dbt run --select customer_360 --vars "{'codmes_inferencia': 202602}"
 #}
 
-{% set mes_corte = var('codmes_inferencia') | int %}
+{% set mes_corte = var('codmes_inferencia', 202602) | int %}
 
 {# 
   CÁLCULOS EN JINJA PURO (Python):
