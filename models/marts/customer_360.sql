@@ -69,13 +69,13 @@ historical_features as (
         coalesce(sum(case when m.codmes between {{ mes_inicio_6m }} and {{ mes_corte }} then m.monto_mes else 0 end), 0) / 6.0 as monto_prom_6m,
         
         -- Window 6m: Frecuencia promedio de accesorios
-        coalesce(sum(case when m.codmes between {{ mes_inicio_6m }} and {{ mes_corte }} then m.frec_accessories_mes else 0 end), 0) / 6.0 as frec_accessories_prom_6m,
+        cast(coalesce(sum(case when m.codmes between {{ mes_inicio_6m }} and {{ mes_corte }} then m.frec_accessories_mes else 0 end), 0) as double) / 6.0 as frec_accessories_prom_6m,
         
         -- Window 6m: Frecuencia promedio de ropa
-        coalesce(sum(case when m.codmes between {{ mes_inicio_6m }} and {{ mes_corte }} then m.frec_clothing_mes else 0 end), 0) / 6.0 as frec_clothing_prom_6m,
+        cast(coalesce(sum(case when m.codmes between {{ mes_inicio_6m }} and {{ mes_corte }} then m.frec_clothing_mes else 0 end), 0) as double) / 6.0 as frec_clothing_prom_6m,
 
         -- Window 2m: Frecuencia promedio de bicicletas (mes de corte y anterior)
-        coalesce(sum(case when m.codmes between {{ mes_inicio_2m }} and {{ mes_corte }} then m.frec_bikes_mes else 0 end), 0) / 2.0 as frec_bikes_prom_2m
+        cast(coalesce(sum(case when m.codmes between {{ mes_inicio_2m }} and {{ mes_corte }} then m.frec_bikes_mes else 0 end), 0) as double) / 2.0 as frec_bikes_prom_2m
 
     from monthly_base m
     inner join universo_activos u on m.customer_id = u.customer_id
