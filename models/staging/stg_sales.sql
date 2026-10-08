@@ -12,7 +12,7 @@ select
     case when cast(quantity as int) < 0 then 0 else cast(quantity as int) end as quantity,
     
     -- Regla 2: Validez (Evitar negativos en precio)
-    case when cast(unit_price as decimal(10,2)) < 0 then 0.00 else cast(coalesce(unit_price, 0) as decimal(10,2)) end as unit_price,
+    case when cast(unit_price as decimal(10,2)) < 0 then 0.00 else COALESCE(CAST(unit_price AS DECIMAL(10,2)), 0.00) end as unit_price,
     
     -- Regla 5: Consistencia (Multiplicación mandatoria)
     cast(quantity as int) * cast(unit_price as decimal(10,2)) as sales_total,

@@ -20,6 +20,6 @@ select
     house_owner,
     number_cars,
     -- Calculamos la edad actual como métrica demográfica de valor añadido
-    datediff(current_date(), birth_date) / 365.25 as edad_cliente,
+    datediff(current_date(), birth_date) / 365 as edad_cliente,
     current_timestamp() as fecha_carga_mart
 from stg_customers
